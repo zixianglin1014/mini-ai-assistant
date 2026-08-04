@@ -1,0 +1,54 @@
+# Python
+
+__pycache__/
+*.py[cod]
+
+# pytest
+
+.pytest_cache/
+
+# virtual env
+
+venv/
+ai-env/
+
+# env
+
+.env
+
+# logs
+
+logs/
+
+*.log
+
+# models
+
+models/*
+
+!models/.gitkeep
+
+
+# vector database
+
+chroma_db/
+
+
+# IDE
+
+.vscode/
+.idea/
+
+
+# OS
+
+.DS_Store
+
+
+# temp
+
+*.tmp
+*.bak
+
+
+archive/

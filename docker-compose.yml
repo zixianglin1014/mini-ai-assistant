@@ -1,0 +1,116 @@
+services:
+
+  mini-ai-assistant:
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+
+    image: mini-ai-assistant:latest
+
+
+    container_name: mini-ai-assistant
+
+
+    ports:
+      - "8000:8000"
+
+
+    env_file:
+      - configs/env/.env.prod
+
+
+    volumes:
+      - ./logs:/app/logs
+      - ./models:/app/models
+      - ./memory:/app/memory
+
+
+    environment:
+
+      APP_ENV: prod
+
+      # Redis配置
+      REDIS_HOST: redis
+
+      REDIS_PORT: 6379
+
+
+    depends_on:
+
+      - redis
+
+
+    restart: unless-stopped
+
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"
+        ]
+
+      interval: 30s
+
+      timeout: 10s
+
+      retries: 3
+
+      start_period: 60s
+
+
+    deploy:
+
+      resources:
+
+        limits:
+
+          memory: 4G
+
+
+
+
+
+  # =========================
+  # Redis缓存服务
+  # =========================
+
+  redis:
+
+
+    image: redis:7-alpine
+
+
+    container_name: mini-ai-redis
+
+
+    restart: unless-stopped
+
+
+    ports:
+
+      - "6379:6379"
+
+
+
+    volumes:
+
+      - redis_data:/data
+
+
+
+    command:
+
+      redis-server --appendonly yes
+
+
+
+
+
+volumes:
+
+  redis_data:

@@ -1,0 +1,12 @@
+[flake8]
+
+max-line-length = 88
+
+ignore = E501
+
+exclude =
+    .git,
+    __pycache__,
+    archive,
+    venv,
+    ai-env
