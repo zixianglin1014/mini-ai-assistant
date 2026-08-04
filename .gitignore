@@ -51,4 +51,10 @@ chroma_db/
 *.bak
 
 
+# environment files
+
+configs/env/.env.*
+!configs/env/.env.example
+
+
 archive/
