@@ -1,60 +1,97 @@
+# =====================
 # Python
+# =====================
 
 __pycache__/
 *.py[cod]
 
-# pytest
+
+# =====================
+# Testing
+# =====================
 
 .pytest_cache/
+.coverage
+htmlcov/
 
-# virtual env
+
+# =====================
+# Virtual Environment
+# =====================
 
 venv/
 ai-env/
 
-# env
+
+# =====================
+# Environment
+# =====================
 
 .env
 
-# logs
+configs/env/.env.*
+!configs/env/.env.example
+
+
+# =====================
+# Logs
+# =====================
 
 logs/
-
 *.log
 
-# models
+
+# =====================
+# AI Models
+# =====================
 
 models/*
 
 !models/.gitkeep
 
 
-# vector database
+# =====================
+# Vector Database
+# =====================
 
 chroma_db/
 
 
+# =====================
+# Runtime Memory
+# =====================
+
+memory/*.json
+
+!memory/default.json
+
+
+# =====================
 # IDE
+# =====================
 
 .vscode/
 .idea/
 
 
+# =====================
 # OS
+# =====================
 
 .DS_Store
+Thumbs.db
 
 
-# temp
+# =====================
+# Temp
+# =====================
 
 *.tmp
 *.bak
 
 
-# environment files
-
-configs/env/.env.*
-!configs/env/.env.example
-
+# =====================
+# Archive
+# =====================
 
 archive/
